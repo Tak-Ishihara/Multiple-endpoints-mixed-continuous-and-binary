@@ -1,1 +1,1 @@
-# Multiple-endpoints-mixed-continuous-and-binary-endpoints
+# Multiple-endpoints-mixed-continuous-and-binary
