@@ -1,4 +1,4 @@
-# Variable description:------
+# Variable description:----
 #  data: Name of data frame containing continuous, binary and group variables
 #  var.end.c: Specify the variable name of the continuous endpoint in double quotation marks
 #  var.end.b1: Specify the variable name of the binary endpoint1 in double quotation marks
@@ -10,7 +10,7 @@
 #  margin.b2: Value of non-inferiority margin for a binary endpoint2
 #  alpha: Specify the one-sided significance level
 
-# Results:------
+# Results:----
 # $IUT Results: The results of the IUT. If it is significant, “Significant” is returned, and if it is not significant, “Not significant” is returned.
 # $N_treat: Number of subjects in the treatment group
 # $N_control: Number of subjects in the control group
@@ -19,16 +19,20 @@
 # $statistics_noninf_continuous: Value of the test statistic for non-inferiority of the continuous variable
 # $statistics_noninf_binary1: Value of the test statistic for non-inferiority of the binary variable1
 # $statistics_noninf_binary2: Value of the test statistic for non-inferiority of the binary variable2
-#----------------------------
+#-------------
 
-# Library---------------------------
+#------------#
+# Library----
+#------------#
 library(MASS)
 library(bindata)
 library(nleqslv)
 library(polycor)
 library(mvtnorm)
 
-# Function: mixed.onecontinuous.twobinary------------
+#--------------------------------------------#
+# Function: mixed.onecontinuous.twobinary----
+#--------------------------------------------#
 mixed.onecontinuous.twobinary <- function(data=df,
                                           var.end.c="ContinuousOutcome1",
                                           var.end.b1="BinaryOutcome1",
@@ -266,7 +270,9 @@ mixed.onecontinuous.twobinary <- function(data=df,
   return(Result_all)
 }
 
-# Example:----
+#------------#
+# Example----
+#------------#
 # Generating Data----
 set.seed(123)
 n <- 100
@@ -289,3 +295,5 @@ mixed.onecontinuous.twobinary(data=df,
                               margin.b1=0.1, 
                               margin.b2=0.1, 
                               alpha=0.05)
+
+#EOF

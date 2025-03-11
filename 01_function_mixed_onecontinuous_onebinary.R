@@ -1,4 +1,4 @@
-# Variable description:------
+# Variable description:----
 #  data: Name of data frame containing continuous, binary and group variables
 #  var.end.c: Specify the variable name of the continuous endpoint in double quotation marks
 #  var.end.b: Specify the variable name of the binary endpoint in double quotation marks
@@ -8,7 +8,7 @@
 #  margin.b: Value of non-inferiority margin for a binary endpoint
 #  alpha: Specify the one-sided significance level
 
-# Results:------
+# Results:----
 # $IUT Results: The results of the IUT. If it is significant, “Significant” is returned, and if it is not significant, “Not significant” is returned.
 # $N_treat: Number of subjects in the treatment group
 # $N_control: Number of subjects in the control group
@@ -16,17 +16,20 @@
 # $statistics_superiority_continuous_ub: Value of the test statistic uB
 # $statistics_noninf_continuous: Value of the test statistic for non-inferiority of the continuous variable
 # $statistics_noninf_binary: Value of the test statistic for non-inferiority of the binary variable
-#----------------------------
+#---------------
 
-
-# Library---------------------------
+#------------#
+# Library----
+#------------#
 library(MASS)
 library(bindata)
 library(nleqslv)
 library(polycor)
 library(mvtnorm)
 
-# Function: mixed.onecontinuous.onebinary------------
+#--------------------------------------------#
+# Function: mixed.onecontinuous.onebinary----
+#--------------------------------------------#
 mixed.onecontinuous.onebinary <- function(data=df, var.end.c, var.end.b, var.group, control.group, margin.c, margin.b, alpha=0.05){
   
   eval(parse(text=paste("data$",var.group," <- as.character(data$",var.group,")
@@ -181,9 +184,10 @@ mixed.onecontinuous.onebinary <- function(data=df, var.end.c, var.end.b, var.gro
   return(Result_all)
 }
 
-# Example:----
+# Generating Data----#------------#
+# Example----
+#------------#
 
-# Generating Data----
 set.seed(125)
 n <- 100
 ID <- 1:n  
@@ -204,3 +208,4 @@ mixed.onecontinuous.onebinary(data=df,
                               margin.b=0.05,
                               alpha=0.05)
 
+#EOF
